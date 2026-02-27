@@ -5,6 +5,7 @@
     const texto = ref('')
     */
     import { ref } from 'vue'
+    const number = ref('')
     const contador = ref(0)
 
     function incrementar() {
@@ -17,8 +18,12 @@
 
 <template>
     <button :disabled="contador <= 0" @click="decrementar">Decrementar</button>
-    <button @click="incrementar">incrementar</button>   
+    <button :disabled="contador >= 10" @click="incrementar">Incrementar</button>
     <p>{{ contador }}</p>
+    <div>
+        <input type="number" v-model="number">
+        <label>{{ number }}</label>
+    </div>
 
    <!-- Aula 2 v-model
     <div>

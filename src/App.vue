@@ -4,15 +4,14 @@
     const mostrar = ref(false)
     const texto = ref('')
     */
-    import { ref } from 'vue'
-    const number = ref('')
-    const contador = ref(0)
-
+    import { ref } from 'vue';
+    const number = ref("");
+    const contador = ref(0);
     function incrementar() {
-            contador.value++
+        contador.value += Number(number.value);
     }
     function decrementar() {
-        contador.value--
+        contador.value -= Number(number.value);
     }
 </script>
 
@@ -21,8 +20,7 @@
     <button :disabled="contador >= 10" @click="incrementar">Incrementar</button>
     <p>{{ contador }}</p>
     <div>
-        <input type="number" v-model="number">
-        <label>{{ number }}</label>
+        <input type="number" v-model="number" min="1" max="10" value="1">
     </div>
 
    <!-- Aula 2 v-model

@@ -5,24 +5,35 @@
     const texto = ref('')
     */
     import { ref } from 'vue';
-    const number = ref("");
     const contador = ref(0);
-    function incrementar() {
-        contador.value += Number(number.value);
+    function incrementar(number) {
+      if(!Number.isNaN(number)) {
+        contador.value += number;
+      }
+      if(contador.value >= 10) {
+        contador.value = 10;
+      }
     }
-    function decrementar() {
-        contador.value -= Number(number.value);
+    function decrementar(number) {
+      if(!Number.isNaN(number)) {
+        contador.value -= number;
+      }
+      if(contador.value <= 0) {
+        contador.value = 0;
+      }
     }
 </script>
 
 <template>
-    <button :disabled="contador <= 0" @click="decrementar">Decrementar</button>
-    <button :disabled="contador >= 10" @click="incrementar">Incrementar</button>
-    <p>{{ contador }}</p>
-    <div>
-        <input type="number" v-model="number" min="1" max="10" value="1">
+  <main>
+    <label>Valor a incrementar/decrementar: </label>
+    <h1>{{ contador }}</h1>
+  <input type="number" v-model="number" min="1" max="10" value="1">
+  <div>
+      <button :disabled="contador <= 0" @click="decrementar(Number(number))">Decrementar</button>
+      <button :disabled="contador >= 10" @click="incrementar(Number(number))">Incrementar</button>
     </div>
-
+  </main>
    <!-- Aula 2 v-model
     <div>
         <input type="text" v-model="texto">
